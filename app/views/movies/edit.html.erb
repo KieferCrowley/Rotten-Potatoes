@@ -1,12 +1,39 @@
 <% content_for :title, "Editing movie" %>
+<div class="container">
+  <h1>Editing movie</h1>
 
-<h1>Editing movie</h1>
+  <div class="form">
+    <%= render "form", movie: @movie %>
+  </div>
 
-<%= render "form", movie: @movie %>
+  <br>
 
-<br>
-
-<div>
-  <%= link_to "Show this movie", @movie %> |
-  <%= link_to "Back to movies", movies_path %>
+  <div>
+    <%= link_to "Show this movie", @movie %> |
+    <%= link_to "Back to movies", movies_path %>
+  </div>
 </div>
+
+<style>
+  div.container {
+    width: 100%;
+    justify-self: center;
+    justify-items: center;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  h1 {
+    width: 99%;
+    margin-top: 0;
+    font-size: 40px;
+    padding: 5px;
+    background-color: maroon;
+    color: white;
+  }
+
+  div.form {
+    border: 1px solid black;
+    padding: 10px;
+  }
+</style>

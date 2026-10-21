@@ -1,10 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="form">
+    <%= render @movie %>
 
-<%= render @movie %>
+    <div class="options">
+      <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
+      <%= link_to "Back to movies", movies_path %>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+      <%= button_to "Destroy this movie", @movie, method: :delete %>
+    </div>
+  </div>
 </div>
+
+<style>
+  div.container {
+    width: 100%;
+    min-height: 97vh;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 1px solid black;
+    background-color: maroon;
+  }
+
+  div.form {
+    width: 40%;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: white;
+  }
+
+  div.options {
+    margin-top: 10px;
+    text-align: center;
+    border-top: 1px dashed black;
+    padding-top: 5px;
+  }
+</style>

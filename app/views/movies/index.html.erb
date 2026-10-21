@@ -2,15 +2,86 @@
 
 <% content_for :title, "Movies" %>
 
-<h1>Movies</h1>
+<div class="container">
+  <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+  <table id="movies">
+    <thead>
+      <tr>
+        <th id="title" class="<%= @sort == 'title_asc' ? 'ascending' : (@sort == 'title_dec' ? 'descending' : '') %>">
+          <%= link_to "Title", movies_path(sort: @sort == 'title_asc' ? 'title_dec' : 'title_asc') %>
+        </th>
+        <th id="rating" class="<%= @sort == 'rating_asc' ? 'ascending' : (@sort == 'rating_dec' ? 'descending' : '') %>">
+          <%= link_to "Rating", movies_path(sort: @sort == 'rating_asc' ? 'rating_dec' : 'rating_asc') %>
+        </th>
+        <th id="date" class="<%= @sort == 'date_asc' ? 'ascending' : (@sort == 'date_dec' ? 'descending' : '') %>">
+          <%= link_to "Release Date", movies_path(sort: @sort == 'date_asc' ? 'date_dec' : 'date_asc') %>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.rating %></td>
+          <td><%= movie.release_date %></td>
+          <td><%= link_to "Show this movie", movie %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="new_movie">
+    <%= link_to "New movie", new_movie_path %>
+  </div>
 </div>
 
-<%= link_to "New movie", new_movie_path %>
+<style>
+  .container {
+    justify-self: center;
+    justify-items: center;
+    width: 100%;
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+    justify-self: center;
+    padding: 0 100px;
+    background-color: maroon;
+    color: white;
+  }
+
+  table {
+    border: 2px solid black;
+  }
+
+  td {
+    padding: 5px 10px;
+    border: 1px solid black;
+  }
+
+  div.new_movie {
+    margin-top: 20px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+
+  .ascending {
+    background-color: rgb(0, 255, 0);
+  }
+
+  .ascending::after {
+    content: " \2B9D";
+  }
+
+  .descending {
+    background-color: rgb(255, 50, 50);
+  }
+
+  .descending::after {
+    content: " \2B9F";
+  }
+</style>
